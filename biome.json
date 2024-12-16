@@ -1,0 +1,140 @@
+{
+    "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+    "vcs": {
+        "enabled": false,
+        "clientKind": "git",
+        "useIgnoreFile": false
+    },
+    "files": {
+        "ignoreUnknown": false,
+        "ignore": ["**/node_modules/**", "**/dist/**", "**/__snapshots__/**"],
+        "maxSize": 5242880
+    },
+    "formatter": {
+        "enabled": true,
+        "useEditorconfig": true,
+        "formatWithErrors": false,
+        "indentStyle": "space",
+        "indentWidth": 4,
+        "lineEnding": "lf",
+        "lineWidth": 100,
+        "bracketSpacing": false
+    },
+    "organizeImports": {
+        "enabled": true
+    },
+    "linter": {
+        "enabled": true,
+        "rules": {
+            "recommended": false,
+            "complexity": {
+                "noBannedTypes": "error",
+                "noUselessTypeConstraint": "error",
+                "noUselessConstructor": "error"
+            },
+            "correctness": {
+                "noPrecisionLoss": "error",
+                "noUnusedImports": "error",
+                "noUnusedVariables": "error",
+                "useArrayLiterals": "off"
+            },
+            "style": {
+                "noNamespace": "error",
+                "useAsConstAssertion": "error",
+                "useBlockStatements": "off",
+                "noNonNullAssertion": "warn"
+            },
+            "suspicious": {
+                "noExplicitAny": "error",
+                "noExtraNonNullAssertion": "error",
+                "noMisleadingInstantiator": "error",
+                "noUnsafeDeclarationMerging": "error",
+                "noShadowRestrictedNames": "error"
+            }
+        }
+    },
+    "javascript": {
+        "parser": {
+            "unsafeParameterDecoratorsEnabled": true
+        },
+        "formatter": {
+            "quoteProperties": "asNeeded",
+            "trailingCommas": "all",
+            "semicolons": "always",
+            "arrowParentheses": "always",
+            "bracketSameLine": false,
+            "quoteStyle": "single",
+            "bracketSpacing": true
+        }
+    },
+    "json": {
+        "formatter": {
+            "indentStyle": "space",
+            "indentWidth": 4
+        }
+    },
+    "overrides": [
+        {
+            "include": ["*.json"],
+            "formatter": {
+                "lineWidth": 100
+            }
+        },
+        {
+            "include": ["*.ts", "*.tsx", "*.mts", "*.cts"],
+            "linter": {
+                "rules": {
+                    "correctness": {
+                        "noConstAssign": "error",
+                        "noGlobalObjectCalls": "off",
+                        "noInvalidConstructorSuper": "off",
+                        "noNewSymbol": "off",
+                        "noSetterReturn": "off",
+                        "noUndeclaredVariables": "off",
+                        "noUnreachable": "off",
+                        "noUnreachableSuper": "off"
+                    },
+                    "style": {
+                        "noArguments": "error",
+                        "noVar": "error",
+                        "useConst": "error"
+                    },
+                    "suspicious": {
+                        "noDuplicateClassMembers": "off",
+                        "noDuplicateObjectKeys": "off",
+                        "noDuplicateParameters": "off",
+                        "noFunctionAssign": "off",
+                        "noImportAssign": "off",
+                        "noRedeclare": "off",
+                        "noUnsafeNegation": "off",
+                        "useGetterReturn": "off"
+                    }
+                }
+            }
+        },
+        {
+            "include": ["*.yaml", "*.yml"],
+            "formatter": {
+                "indentWidth": 2
+            }
+        },
+        {
+            "include": ["**/*.spec.ts", "**/*.e2e-spec.ts", "test/"],
+            "javascript": {
+                "globals": [
+                    "expect",
+                    "describe",
+                    "test",
+                    "it",
+                    "beforeEach",
+                    "afterEach",
+                    "beforeAll",
+                    "afterAll",
+                    "vitest",
+                    "vi",
+                    "Logger"
+                ]
+            }
+        }
+    ]
+}

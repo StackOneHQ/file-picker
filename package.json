@@ -1,0 +1,67 @@
+{
+    "name": "@stackone/file-picker",
+    "version": "0.0.0",
+    "description": "Navigate and select files from connected integrations",
+    "main": "dist/index.js",
+    "module": "dist/index.es.mjs",
+    "types": "dist/types/index.d.ts",
+    "files": ["dist", "package.json", "README.md"],
+    "scripts": {
+        "clean": "rimraf dist",
+        "prebuild": "npm run clean",
+        "build": "rollup -c --environment NODE_ENV:production",
+        "prebuild:dev": "npm run clean",
+        "build:dev": "rollup -c --environment NODE_ENV:development",
+        "code:format": "biome format ./src ./*.mjs",
+        "code:format:fix": "biome format --write ./src ./*.mjs",
+        "code:lint": "biome lint --error-on-warnings ./src ./*.mjs",
+        "code:lint:fix": "biome lint --write ./src ./*.mjs",
+        "code:check": "biome check ./src ./*.mjs",
+        "code:check:fix": "biome check --write ./src ./*.mjs",
+        "lint": "npm run code:check",
+        "lint:fix": "npm run code:check:fix",
+        "test": "vitest run --silent",
+        "test:watch": "vitest watch --silent",
+        "prepare": "husky",
+        "publish-release": "npm publish --access=public"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/StackOneHQ/file-picker.git"
+    },
+    "author": "StackOne",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/StackOneHQ/file-picker/issues"
+    },
+    "homepage": "https://github.com/StackOneHQ/file-picker#readme",
+    "volta": {
+        "node": "20.18.1",
+        "npm": "10.8.2"
+    },
+    "devDependencies": {
+        "@biomejs/biome": "^1.9.4",
+        "@commitlint/cli": "^19.6.1",
+        "@commitlint/config-angular": "^19.6.0",
+        "@rollup/plugin-commonjs": "^28.0.2",
+        "@rollup/plugin-json": "^6.1.0",
+        "@rollup/plugin-node-resolve": "^16.0.0",
+        "@rollup/plugin-terser": "^0.4.4",
+        "@rollup/plugin-typescript": "^12.1.2",
+        "@vitest/coverage-istanbul": "^2.1.8",
+        "@vitest/coverage-v8": "^2.1.8",
+        "esbuild": "^0.24.0",
+        "esbuild-plugin-tsc": "^0.4.0",
+        "husky": "^9.1.7",
+        "rimraf": "^6.0.1",
+        "rollup": "^4.28.1",
+        "rollup-plugin-typescript2": "^0.36.0",
+        "ts-node": "^10.9.2",
+        "tsconfig-paths": "^4.2.0",
+        "tslib": "^2.8.1",
+        "typescript": "^5.7.2",
+        "unplugin-swc": "^1.5.1",
+        "vitest": "^2.1.8",
+        "vitest-mock-extended": "^2.0.2"
+    }
+}

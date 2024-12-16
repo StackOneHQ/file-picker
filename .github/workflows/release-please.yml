@@ -1,0 +1,37 @@
+on:
+  push:
+    branches:
+      - main
+
+name: release-please
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: googleapis/release-please-action@v4
+        id: release
+        with:
+          token: ${{ secrets.FILE_PICKER_REPO_PAT }}
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json
+
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        if: steps.release.outputs.paths_released != '[]'
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        if: steps.release.outputs.paths_released != '[]'
+        with:
+          node-version: '20.18.x'
+          registry-url: 'https://registry.npmjs.org'
+      - name: Build
+        if: steps.release.outputs.paths_released != '[]'
+        run: |
+          npm install
+          npm run build
+      - name: Publish
+        if: steps.release.outputs.paths_released != '[]'
+        run: |
+          npm run publish-release
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
