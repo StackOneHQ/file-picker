@@ -22,6 +22,7 @@
         "lint:fix": "npm run code:check:fix",
         "test": "vitest run --silent",
         "test:watch": "vitest watch --silent",
+        "test:coverage": "vitest run --coverage --globals",
         "prepare": "husky",
         "publish-release": "npm publish --access=public"
     },
