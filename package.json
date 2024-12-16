@@ -1,11 +1,15 @@
 {
     "name": "@stackone/file-picker",
-    "version": "0.0.0",
+    "version": "1.0.0",
     "description": "Navigate and select files from connected integrations",
     "main": "dist/index.js",
     "module": "dist/index.es.mjs",
     "types": "dist/types/index.d.ts",
-    "files": ["dist", "package.json", "README.md"],
+    "files": [
+        "dist",
+        "package.json",
+        "README.md"
+    ],
     "scripts": {
         "clean": "rimraf dist",
         "prebuild": "npm run clean",
