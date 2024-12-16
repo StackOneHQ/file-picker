@@ -11,7 +11,7 @@ jobs:
       - uses: googleapis/release-please-action@v4
         id: release
         with:
-          token: ${{ secrets.FILE_PICKER_REPO_PAT }}
+          token: ${{ secrets.REPO_GH_PAT }}
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
 
