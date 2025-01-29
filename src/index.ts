@@ -1,1 +1,1 @@
-export { openFilePicker } from './filePicker';
+export { useFilePicker } from './filePicker';

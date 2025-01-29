@@ -1,10 +1,10 @@
 // dummy tests - DELETE ME
-import { openFilePicker } from '../filePicker';
+import { useFilePicker } from '../filePicker';
 
 describe('#FilePicker', () => {
     describe('.openFilePicker', () => {
         it('returns true', async () => {
-            const result = await openFilePicker();
+            const result = useFilePicker();
 
             expect(result).toBe(true);
         });
