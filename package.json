@@ -4,7 +4,7 @@
     "description": "Navigate and select files from connected integrations",
     "main": "dist/index.js",
     "module": "dist/index.es.mjs",
-    "types": "dist/types/index.d.ts",
+    "types": "dist/types/src/index.d.ts",
     "files": [
         "dist",
         "package.json",
@@ -58,6 +58,7 @@
         "esbuild": "^0.25.0",
         "esbuild-plugin-tsc": "^0.4.0",
         "husky": "^9.1.7",
+        "react": "^18.2.0",
         "rimraf": "^6.0.1",
         "rollup": "^4.28.1",
         "rollup-plugin-typescript2": "^0.36.0",
