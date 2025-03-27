@@ -6,4 +6,4 @@ export interface FilePickerOptions {
     onClose?: () => void;
     onOpen?: () => void;
     onCancel?: () => void;
-  }
+}
