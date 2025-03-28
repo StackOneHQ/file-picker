@@ -7,24 +7,24 @@ export class FilePicker {
     #baseUrl: string;
     #iframe: HTMLIFrameElement | null = null;
     #isListenerAttached = false;
-    #onFilesPick: (data: unknown) => void;
+    #onFilesPicked: (data: unknown) => void;
     #onClose: () => void;
     #onOpen: () => void;
     #onCancel: () => void;
 
     constructor(options: FilePickerOptions) {
-        const { containerId, sessionToken, baseUrl, onFilesPick, onClose, onOpen, onCancel } =
+        const { containerId, sessionToken, baseUrl, onFilesPicked, onClose, onOpen, onCancel } =
             options;
         this.#containerId = containerId ?? null;
         this.#sessionToken = sessionToken;
         this.#baseUrl = baseUrl ?? 'https://app.stackone.com';
-        this.#onFilesPick = onFilesPick ?? (() => {});
+        this.#onFilesPicked = onFilesPicked ?? (() => {});
         this.#onClose = onClose ?? (() => {});
         this.#onOpen = onOpen ?? (() => {});
         this.#onCancel = onCancel ?? (() => {});
     }
 
-    openFilePicker(win = window, rootElementId = 'root') {
+    open(win = window, rootElementId = 'root') {
         if (this.#iframe) {
             return;
         }
@@ -54,7 +54,7 @@ export class FilePicker {
         this.#iframe.src = url;
     }
 
-    closeFilePicker() {
+    close() {
         if (this.#iframe) {
             this.#iframe.remove();
             this.#iframe = null;
@@ -78,15 +78,15 @@ export class FilePicker {
                 this.#onOpen?.();
                 break;
             case 'FILE_PICKER_CLOSED':
-                this.closeFilePicker();
+                this.close();
                 break;
             case 'FILE_PICKER_FILES_SELECTED':
-                this.#onFilesPick(event.data.payload);
-                this.closeFilePicker();
+                this.#onFilesPicked(event.data.payload);
+                this.close();
                 break;
             case 'FILE_PICKER_CANCELLED':
                 this.#onCancel?.();
-                this.closeFilePicker();
+                this.close();
                 break;
         }
     };
