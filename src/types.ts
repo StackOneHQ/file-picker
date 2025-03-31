@@ -1,6 +1,6 @@
 export interface FilePickerOptions {
-    containerId?: string;
     sessionToken: string;
+    containerId?: string;
     baseUrl?: string;
     onFilesPicked?: (data: unknown) => void;
     onClose?: () => void;
