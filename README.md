@@ -1,65 +1,92 @@
-# File Picker
+# StackOne File Picker
 
-## Description
+Allow your users to select files from your integrations. The `@stackone/file-picker` introduces an easy-to-use SDK to embed the StackOne file picker into your application.
 
-StackOne File Picker to navigate and select files from connected integrations.
+## Install
 
-The teck stack used inside in this package is composed by:
+```
+# NPM
+npm install --save @stackone/file-picker
 
-- [Node.js](https://nodejs.org) - JavaScript runtime
-- [TypeScript](https://www.typescriptlang.org/) - Typed JavaScript
-- [Rollup](https://rollupjs.org/) - Module bundler
-- [Vitest](https://vitest.dev) - Testing framework
-- [Biome](https://biomejs.dev) - Linting and formatting
-
-## Requirements
-
-Node.js 20+ is required to run this project. The recommended way to install and manage Node.js versions is using
-[Volta](https://volta.sh/).
-
-## Installation
-
-```bash
-# install dependencies
-$ npm install
+# Yarn
+yarn add @stackone/file-picker
 ```
 
-This command will also install husky to ensure that all the commits follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification.
+## Usage
 
-## Available commands
+Initialize the File Picker with your options, and then call the `open` method to open the file picker. Listen to the callbacks to know when a file has been picked or whether
+the flow has been cancelled. The callback will give you the information about the file picked - you may
+also retrieve this information by using webhooks or the API. For example purposes, we used React as the framework, but you can use any framework built on top of Javascript/Typescript.
 
-```bash
-# clean build output
-$ npm run clean
+```jsx
+import { FilePicker } from '@stackone/file-picker';
+
+export const FilePickerButton = () => {
+  const [filePicker, setFilePicker] = useState<FilePicker | null> (null);
+
+  useEffect(() => {
+    const initializePicker = async () => {
+      const { sessionToken } = await retrieveAPISessionToken();
+
+      setFilePicker(new FilePicker({ sessionToken }));
+    };
+
+    initializePicker();
+  }, []);
+
+  const handleClick = useCallback(() => {
+    filePicker?.open();
+  }, [filePicker]);
+
+  return (
+    <button onClick={handleClick} disabled={!filePicker}>
+      Open File Picker
+    </button>
+  );
+};
 ```
 
-```bash
-# build package
-$ npm run build
+### File Picker Options
+
+Apart from the `sessionToken`, you may pass a few options to customize the File Picker.
+
+```jsx
+// Example of Options object
+const options = {
+    sessionToken = 'your-session-token',
+    containerId = 'file-picker-container',
+    baseUrl = 'https://app.stackone.com',
+    onFilesPicked = (files) => {
+        console.log('Selected files:', files);
+    },
+    onOpen = () => {
+            console.log('File picker opened');
+        },
+    onClose = () => {
+        console.log('File picker closed');
+    },
+    onCancel = () => {
+        console.log('File selection canceled');
+    }
+};
+
+const filePicker = new FilePicker(options);
 ```
 
-```bash
-# run tests
-$ npm run test
-```
+| Name              | Type     | Required | Description                                                                                                               |
+| ----------------- | -------- | -------- | ------------------------------------------------------------------------------------------------------------------------- |
+| **sessionToken**  | string   | **Yes**  | API session token created in the backend. The session token allows users to have access to their file picker integration. |
+| **containerId**   | string   | No       | ID of the container element where the file picker will be mounted.                                                        |
+| **baseUrl**       | string   | No       | Which API instance should it connect to.                                                                                  |
+| **onFilesPicked** | function | No       | Called when files are selected.                                                                                           |
+| **onOpen()**      | function | No       | Called when the file picker is opened.                                                                                    |
+| **onClose()**     | function | No       | Called every time the file picker is closed regardless of whether a file has been picked or not.                          |
+| **onCancel()**    | function | No       | Called when the file picker is closed without a file being selected.                                                      |
 
-```bash
-# run tests with coverage report
-$ npm run test:coverage
-```
+## Contribute & Release
 
-```bash
-# run linter
-$ npm run lint
-```
+This repose uses [conventional commit](https://www.conventionalcommits.org/en/v1.0.0/). The repo use semantic-release and the package version is automatically determined based on the commit messages.
 
-```bash
-# run linter and try to fix any error
-$ npm run lint:fix
-```
+## Release
 
-## Convential Commits
-
-This project uses [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) to ensure that all the commits
-follow a standard. This is done to ensure that the changelog can be automatically generated and to allow the automatic
-versioning of the package.
+Use the Manual release workflow to trigger a release. The package version and changelog will automatically be generated based on [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/).
