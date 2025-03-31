@@ -2,7 +2,7 @@
     "compilerOptions": {
         "module": "ES2020",
         "moduleResolution": "Node",
-        "lib": ["es2021"],
+        "lib": ["es2021", "DOM"],
         "paths": {
             "/*": ["./*.ts", "./*.js", "./*"],
             "/*.js": ["./*.js"],
@@ -16,6 +16,8 @@
         "allowSyntheticDefaultImports": true,
         "target": "es2021",
         "sourceMap": true,
+        "emitDeclarationOnly": false,
+        "declarationDir": "./dist/types",
         "outDir": "./dist",
         "baseUrl": "./",
         "skipLibCheck": true,

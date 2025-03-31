@@ -1,12 +1,33 @@
-// dummy tests - DELETE ME
-import { openFilePicker } from '../filePicker';
+import { describe, expect, it, vi } from 'vitest';
+import { FilePicker } from '../filePicker';
 
 describe('#FilePicker', () => {
-    describe('.openFilePicker', () => {
-        it('returns true', async () => {
-            const result = await openFilePicker();
+    describe('.constructor', () => {
+        describe('when provided with options', () => {
+            it('returns a new instance of FilePicker', () => {
+                const picker = new FilePicker({
+                    containerId: 'custom-container',
+                    sessionToken: 'test-token',
+                    baseUrl: 'https://custom.example.com',
+                });
 
-            expect(result).toBe(true);
+                expect(picker).toBeInstanceOf(FilePicker);
+            });
+        });
+    });
+
+    describe('When the picker is closed', () => {
+        it('calls the onClose callback', () => {
+            const mockOnClose = vi.fn();
+
+            const picker = new FilePicker({
+                sessionToken: 'test-token',
+                onClose: mockOnClose,
+            });
+
+            picker.close();
+
+            expect(mockOnClose).toHaveBeenCalledTimes(1);
         });
     });
 });
