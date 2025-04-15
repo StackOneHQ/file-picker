@@ -49,7 +49,7 @@ export class FilePicker {
         }
         const url = `${this.#baseUrl}/embedded/files_picker?token=${
             this.#sessionToken
-        }&origin=${window.origin}`;
+        }&origin=${btoa(window.origin)}`;
 
         this.#iframe.src = url;
     }
