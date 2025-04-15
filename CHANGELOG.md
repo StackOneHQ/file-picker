@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.1](https://github.com/StackOneHQ/file-picker/compare/file-picker-v0.1.0...file-picker-v0.1.1) (2025-04-15)
+
+
+### Bug Fixes
+
+* base64 encode ([#14](https://github.com/StackOneHQ/file-picker/issues/14)) ([bbaff5a](https://github.com/StackOneHQ/file-picker/commit/bbaff5a73dc95ceb930c2c04f8e6be640de01d3c))
+
 ## [0.1.0](https://github.com/StackOneHQ/file-picker/compare/file-picker-v0.0.2...file-picker-v0.1.0) (2025-03-31)
 
 

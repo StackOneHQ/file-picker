@@ -1,6 +1,6 @@
 {
     "name": "@stackone/file-picker",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "Navigate and select files from connected integrations",
     "main": "dist/index.js",
     "module": "dist/index.es.mjs",
