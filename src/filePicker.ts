@@ -7,16 +7,26 @@ export class FilePicker {
     #baseUrl: string;
     #iframe: HTMLIFrameElement | null = null;
     #isListenerAttached = false;
+    #fields: string[];
     #onFilesPicked: (data: unknown) => void;
     #onClose: () => void;
     #onOpen: () => void;
     #onCancel: () => void;
 
     constructor(options: FilePickerOptions) {
-        const { containerId, sessionToken, baseUrl, onFilesPicked, onClose, onOpen, onCancel } =
-            options;
+        const {
+            containerId,
+            sessionToken,
+            baseUrl,
+            fields,
+            onFilesPicked,
+            onClose,
+            onOpen,
+            onCancel,
+        } = options;
         this.#containerId = containerId ?? null;
         this.#sessionToken = sessionToken;
+        this.#fields = fields ?? [];
         this.#baseUrl = baseUrl ?? 'https://app.stackone.com';
         this.#onFilesPicked = onFilesPicked ?? (() => {});
         this.#onClose = onClose ?? (() => {});
@@ -49,8 +59,7 @@ export class FilePicker {
         }
         const url = `${this.#baseUrl}/embedded/files_picker?token=${
             this.#sessionToken
-        }&origin=${btoa(window.origin)}`;
-
+        }&origin=${btoa(window.origin)}&fields=${btoa(JSON.stringify(this.#fields))}`;
         this.#iframe.src = url;
     }
 
