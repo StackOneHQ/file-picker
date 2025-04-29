@@ -56,6 +56,7 @@ const options = {
     sessionToken = 'your-session-token',
     containerId = 'file-picker-container',
     baseUrl = 'https://app.stackone.com',
+    fields = ['name', 'path', 'driveId'],
     onFilesPicked = (files) => {
         console.log('Selected files:', files);
     },
@@ -78,6 +79,7 @@ const filePicker = new FilePicker(options);
 | **sessionToken**  | string   | **Yes**  | API session token created in the backend. The session token allows users to have access to their file picker integration. |
 | **containerId**   | string   | No       | ID of the container element where the file picker will be mounted.                                                        |
 | **baseUrl**       | string   | No       | Which API instance should it connect to.                                                                                  |
+| **fields**        | string[] | No       | Which fields from the raw picked file will be mapped on the files picked callback.                                        |
 | **onFilesPicked** | function | No       | Called when files are selected.                                                                                           |
 | **onOpen()**      | function | No       | Called when the file picker is opened.                                                                                    |
 | **onClose()**     | function | No       | Called every time the file picker is closed regardless of whether a file has been picked or not.                          |
