@@ -1,5 +1,6 @@
 import { FilePickerOptions } from './types';
 import { createIFrameInDocument } from './utils/dom';
+import { createUrl } from './utils/url';
 
 export class FilePicker {
     #containerId: string | null;
@@ -7,7 +8,7 @@ export class FilePicker {
     #baseUrl: string;
     #iframe: HTMLIFrameElement | null = null;
     #isListenerAttached = false;
-    #fields: string[];
+    #fields?: string[];
     #onFilesPicked: (data: unknown) => void;
     #onClose: () => void;
     #onOpen: () => void;
@@ -26,7 +27,7 @@ export class FilePicker {
         } = options;
         this.#containerId = containerId ?? null;
         this.#sessionToken = sessionToken;
-        this.#fields = fields ?? [];
+        this.#fields = fields;
         this.#baseUrl = baseUrl ?? 'https://app.stackone.com';
         this.#onFilesPicked = onFilesPicked ?? (() => {});
         this.#onClose = onClose ?? (() => {});
@@ -57,9 +58,13 @@ export class FilePicker {
             const error = 'Failed to open stackone file picker: iframe content window not found';
             throw new Error(error);
         }
-        const url = `${this.#baseUrl}/embedded/files_picker?token=${
-            this.#sessionToken
-        }&origin=${btoa(window.origin)}&fields=${btoa(JSON.stringify(this.#fields))}`;
+
+        const url = createUrl(
+            `${this.#baseUrl}/embedded/files_picker`,
+            this.#sessionToken,
+            window.origin,
+            this.#fields,
+        );
         this.#iframe.src = url;
     }
 
