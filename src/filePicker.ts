@@ -1,5 +1,6 @@
 import { FilePickerOptions } from './types';
 import { createIFrameInDocument } from './utils/dom';
+import { createUrl } from './utils/url';
 
 export class FilePicker {
     #containerId: string | null;
@@ -7,16 +8,26 @@ export class FilePicker {
     #baseUrl: string;
     #iframe: HTMLIFrameElement | null = null;
     #isListenerAttached = false;
+    #fields?: string[];
     #onFilesPicked: (data: unknown) => void;
     #onClose: () => void;
     #onOpen: () => void;
     #onCancel: () => void;
 
     constructor(options: FilePickerOptions) {
-        const { containerId, sessionToken, baseUrl, onFilesPicked, onClose, onOpen, onCancel } =
-            options;
+        const {
+            containerId,
+            sessionToken,
+            baseUrl,
+            fields,
+            onFilesPicked,
+            onClose,
+            onOpen,
+            onCancel,
+        } = options;
         this.#containerId = containerId ?? null;
         this.#sessionToken = sessionToken;
+        this.#fields = fields;
         this.#baseUrl = baseUrl ?? 'https://app.stackone.com';
         this.#onFilesPicked = onFilesPicked ?? (() => {});
         this.#onClose = onClose ?? (() => {});
@@ -47,10 +58,13 @@ export class FilePicker {
             const error = 'Failed to open stackone file picker: iframe content window not found';
             throw new Error(error);
         }
-        const url = `${this.#baseUrl}/embedded/files_picker?token=${
-            this.#sessionToken
-        }&origin=${btoa(window.origin)}`;
 
+        const url = createUrl(
+            `${this.#baseUrl}/embedded/files_picker`,
+            this.#sessionToken,
+            window.origin,
+            this.#fields,
+        );
         this.#iframe.src = url;
     }
 
