@@ -85,6 +85,14 @@ const filePicker = new FilePicker(options);
 | **onClose()**     | function | No       | Called every time the file picker is closed regardless of whether a file has been picked or not.                          |
 | **onCancel()**    | function | No       | Called when the file picker is closed without a file being selected.                                                      |
 
+### File Type
+When you get the callback from the `onFilesPicked` function, you will receive an array of files you selected with the following parameters:
+| Name              | Type     | Required | Description                                                                                                               |
+| ----------------- | -------- | -------- | ------------------------------------------------------------------------------------------------------------------------- |
+| **id**            | string   | **Yes**  | The Unified Id for the file.                                                                                              |
+| **name**          | string   | No       | The Name of the file.                                                                                                     |
+| **path**          | string   | No       | The URL of the file.                                                                                                      |
+| **driveId**       | string   | No       | The Drive Id of the file.                                                                                                 |
 ## Contribute & Release
 
 This repose uses [conventional commit](https://www.conventionalcommits.org/en/v1.0.0/). The repo use semantic-release and the package version is automatically determined based on the commit messages.
