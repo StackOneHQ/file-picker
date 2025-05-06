@@ -1,4 +1,4 @@
-import { FilePickerOptions } from './types';
+import { File, FilePickerOptions } from './types';
 import { createIFrameInDocument } from './utils/dom';
 import { createUrl } from './utils/url';
 
@@ -9,10 +9,11 @@ export class FilePicker {
     #iframe: HTMLIFrameElement | null = null;
     #isListenerAttached = false;
     #fields?: string[];
-    #onFilesPicked: (data: unknown) => void;
+    #onFilesPicked: (data: File[]) => void;
     #onClose: () => void;
     #onOpen: () => void;
     #onCancel: () => void;
+    #onError: (error: Error) => void;
 
     constructor(options: FilePickerOptions) {
         const {
@@ -24,6 +25,7 @@ export class FilePicker {
             onClose,
             onOpen,
             onCancel,
+            onError,
         } = options;
         this.#containerId = containerId ?? null;
         this.#sessionToken = sessionToken;
@@ -33,6 +35,7 @@ export class FilePicker {
         this.#onClose = onClose ?? (() => {});
         this.#onOpen = onOpen ?? (() => {});
         this.#onCancel = onCancel ?? (() => {});
+        this.#onError = onError ?? (() => {});
     }
 
     open(win = window, rootElementId = 'root') {
@@ -100,6 +103,10 @@ export class FilePicker {
                 break;
             case 'FILE_PICKER_CANCELLED':
                 this.#onCancel?.();
+                this.close();
+                break;
+            case 'FILE_PICKER_ERROR':
+                this.#onError?.(event.data.payload);
                 this.close();
                 break;
         }
