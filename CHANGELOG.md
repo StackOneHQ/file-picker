@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://github.com/StackOneHQ/file-picker/compare/file-picker-v0.1.1...file-picker-v0.2.0) (2025-05-05)
+
+
+### Features
+
+* **ENG-8895:** add fields to file picker ([#17](https://github.com/StackOneHQ/file-picker/issues/17)) ([36580b1](https://github.com/StackOneHQ/file-picker/commit/36580b15756f749761578c92128a003005ffc7b4))
+
 ## [0.1.1](https://github.com/StackOneHQ/file-picker/compare/file-picker-v0.1.0...file-picker-v0.1.1) (2025-04-15)
 
 
