@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/StackOneHQ/file-picker/compare/file-picker-v0.2.0...file-picker-v0.3.0) (2025-05-07)
+
+
+### Features
+
+* **ENG-9146:** Add on error event ([#20](https://github.com/StackOneHQ/file-picker/issues/20)) ([c800ef1](https://github.com/StackOneHQ/file-picker/commit/c800ef17a418e497bf3368ddb9f1e87e06cdd94a))
+
 ## [0.2.0](https://github.com/StackOneHQ/file-picker/compare/file-picker-v0.1.1...file-picker-v0.2.0) (2025-05-05)
 
 
