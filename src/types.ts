@@ -1,4 +1,4 @@
-type File = {
+export type File = {
     id: string;
     name?: string;
     path?: string;
@@ -11,6 +11,7 @@ export interface FilePickerOptions {
     baseUrl?: string;
     fields?: string[];
     onFilesPicked?: (data: File[]) => void;
+    onError?: (error: Error) => void;
     onClose?: () => void;
     onOpen?: () => void;
     onCancel?: () => void;

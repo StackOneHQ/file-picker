@@ -84,6 +84,7 @@ const filePicker = new FilePicker(options);
 | **onOpen()**      | function | No       | Called when the file picker is opened.                                                                                    |
 | **onClose()**     | function | No       | Called every time the file picker is closed regardless of whether a file has been picked or not.                          |
 | **onCancel()**    | function | No       | Called when the file picker is closed without a file being selected.                                                      |
+| **onError()**     | function | No       | Called when the file picker has an error.                                                                                 |
 
 ### File Type
 When you get the callback from the `onFilesPicked` function, you will receive an array of files you selected with the following parameters:
