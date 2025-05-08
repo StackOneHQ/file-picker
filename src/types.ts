@@ -9,6 +9,7 @@ export interface FilePickerOptions {
     sessionToken: string;
     containerId?: string;
     baseUrl?: string;
+    apiUrl?: string;
     fields?: string[];
     onFilesPicked?: (data: File[]) => void;
     onError?: (error: Error) => void;

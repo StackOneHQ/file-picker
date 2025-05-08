@@ -3,6 +3,7 @@ export const createUrl = (
     sessionToken: string,
     origin: string,
     fields?: string[],
+    apiUrl?: string,
 ) => {
     const url = new URL(baseUrl);
     url.searchParams.set('token', sessionToken);
@@ -12,5 +13,22 @@ export const createUrl = (
         url.searchParams.set('fields', btoa(JSON.stringify(fields)));
     }
 
+    if (apiUrl && validateApiUrl(apiUrl)) {
+        url.searchParams.set('apiUrl', btoa(apiUrl));
+    }
     return url.toString();
+};
+
+const validateApiUrl = (apiUrl: string): boolean => {
+    try {
+        const url = new URL(apiUrl);
+        const validDomains = ['localhost', 'api.stackone-dev.com', 'api.stackone.com'];
+
+        return (
+            validDomains.includes(url.hostname) &&
+            (url.protocol === 'http:' || url.protocol === 'https:')
+        );
+    } catch (_e) {
+        return false;
+    }
 };

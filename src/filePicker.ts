@@ -6,6 +6,7 @@ export class FilePicker {
     #containerId: string | null;
     #sessionToken: string;
     #baseUrl: string;
+    #apiUrl: string;
     #iframe: HTMLIFrameElement | null = null;
     #isListenerAttached = false;
     #fields?: string[];
@@ -20,6 +21,7 @@ export class FilePicker {
             containerId,
             sessionToken,
             baseUrl,
+            apiUrl,
             fields,
             onFilesPicked,
             onClose,
@@ -31,6 +33,7 @@ export class FilePicker {
         this.#sessionToken = sessionToken;
         this.#fields = fields;
         this.#baseUrl = baseUrl ?? 'https://app.stackone.com';
+        this.#apiUrl = apiUrl ?? 'https://api.stackone.com';
         this.#onFilesPicked = onFilesPicked ?? (() => {});
         this.#onClose = onClose ?? (() => {});
         this.#onOpen = onOpen ?? (() => {});
@@ -67,6 +70,7 @@ export class FilePicker {
             this.#sessionToken,
             window.origin,
             this.#fields,
+            this.#apiUrl,
         );
         this.#iframe.src = url;
     }
