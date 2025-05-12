@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0](https://github.com/StackOneHQ/file-picker/compare/file-picker-v0.3.0...file-picker-v0.4.0) (2025-05-12)
+
+
+### Features
+
+* **ENG-9328:** add api url ([#22](https://github.com/StackOneHQ/file-picker/issues/22)) ([4f05cf9](https://github.com/StackOneHQ/file-picker/commit/4f05cf9e7245ecb8bce33250bd4633d08f6009af))
+
 ## [0.3.0](https://github.com/StackOneHQ/file-picker/compare/file-picker-v0.2.0...file-picker-v0.3.0) (2025-05-07)
 
 
