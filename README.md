@@ -57,6 +57,7 @@ const options = {
     containerId = 'file-picker-container',
     baseUrl = 'https://app.stackone.com',
     fields = ['name', 'path', 'driveId'],
+    showBranding = false,
     onFilesPicked = (files) => {
         console.log('Selected files:', files);
     },
@@ -80,6 +81,7 @@ const filePicker = new FilePicker(options);
 | **containerId**   | string   | No       | ID of the container element where the file picker will be mounted.                                                        |
 | **baseUrl**       | string   | No       | Which API instance should it connect to.                                                                                  |
 | **fields**        | string[] | No       | Which fields from the raw picked file will be mapped on the files picked callback.                                        |
+| **showBranding**  | string   | No       | Show StackOne footer on the file picker, it is defaulted to true.                                                         |
 | **onFilesPicked** | function | No       | Called when files are selected.                                                                                           |
 | **onOpen()**      | function | No       | Called when the file picker is opened.                                                                                    |
 | **onClose()**     | function | No       | Called every time the file picker is closed regardless of whether a file has been picked or not.                          |

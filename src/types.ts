@@ -11,6 +11,7 @@ export interface FilePickerOptions {
     baseUrl?: string;
     apiUrl?: string;
     fields?: string[];
+    showBranding?: boolean;
     onFilesPicked?: (data: File[]) => void;
     onError?: (error: Error) => void;
     onClose?: () => void;

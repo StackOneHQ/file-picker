@@ -44,5 +44,19 @@ describe('#url', () => {
                 expect(parsedUrl.searchParams.has('fields')).toBe(false);
             });
         });
+
+        describe('when showBranding is false', () => {
+            it('creates URL without showBranding parameter', () => {
+                const baseUrl = 'https://example.com';
+                const sessionToken = 'test-token';
+                const origin = 'https://myapp.com';
+                const showBranding = false;
+
+                const url = createUrl(baseUrl, sessionToken, origin, undefined, undefined, showBranding);
+                const parsedUrl = new URL(url);
+
+                expect(parsedUrl.searchParams.get('showBranding')).toBe('false');
+            });
+        });
     });
 });
