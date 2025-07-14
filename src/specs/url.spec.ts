@@ -52,7 +52,14 @@ describe('#url', () => {
                 const origin = 'https://myapp.com';
                 const showBranding = false;
 
-                const url = createUrl(baseUrl, sessionToken, origin, undefined, undefined, showBranding);
+                const url = createUrl(
+                    baseUrl,
+                    sessionToken,
+                    origin,
+                    undefined,
+                    undefined,
+                    showBranding,
+                );
                 const parsedUrl = new URL(url);
 
                 expect(parsedUrl.searchParams.get('showBranding')).toBe('false');
