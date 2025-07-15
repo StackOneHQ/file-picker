@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.0](https://github.com/StackOneHQ/file-picker/compare/file-picker-v0.4.0...file-picker-v0.5.0) (2025-07-15)
+
+
+### Features
+
+* **ENG-10566:** add show branding flag ([#24](https://github.com/StackOneHQ/file-picker/issues/24)) ([5726416](https://github.com/StackOneHQ/file-picker/commit/57264163eb4323be15a6487d5d159cdb71e9089d))
+
 ## [0.4.0](https://github.com/StackOneHQ/file-picker/compare/file-picker-v0.3.0...file-picker-v0.4.0) (2025-05-12)
 
 
