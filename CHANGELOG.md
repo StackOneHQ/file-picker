@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.0](https://github.com/StackOneHQ/file-picker/compare/file-picker-v0.5.0...file-picker-v0.6.0) (2025-07-22)
+
+
+### Features
+
+* **ENG-10240:** enable folder selection ([#26](https://github.com/StackOneHQ/file-picker/issues/26)) ([2aac829](https://github.com/StackOneHQ/file-picker/commit/2aac8290887681180a605c74792861949d177c99))
+
 ## [0.5.0](https://github.com/StackOneHQ/file-picker/compare/file-picker-v0.4.0...file-picker-v0.5.0) (2025-07-15)
 
 
