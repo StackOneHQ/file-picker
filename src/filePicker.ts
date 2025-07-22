@@ -11,6 +11,7 @@ export class FilePicker {
     #isListenerAttached = false;
     #showBranding = true;
     #fields?: string[];
+    #folderSelectionEnabled = false;
     #onFilesPicked: (data: File[]) => void;
     #onClose: () => void;
     #onOpen: () => void;
@@ -25,6 +26,7 @@ export class FilePicker {
             apiUrl,
             fields,
             showBranding,
+            folderSelectionEnabled,
             onFilesPicked,
             onClose,
             onOpen,
@@ -37,6 +39,7 @@ export class FilePicker {
         this.#baseUrl = baseUrl ?? 'https://app.stackone.com';
         this.#apiUrl = apiUrl ?? 'https://api.stackone.com';
         this.#showBranding = showBranding ?? true;
+        this.#folderSelectionEnabled = folderSelectionEnabled ?? false;
         this.#onFilesPicked = onFilesPicked ?? (() => {});
         this.#onClose = onClose ?? (() => {});
         this.#onOpen = onOpen ?? (() => {});
@@ -75,6 +78,7 @@ export class FilePicker {
             this.#fields,
             this.#apiUrl,
             this.#showBranding,
+            this.#folderSelectionEnabled,
         );
         this.#iframe.src = url;
     }
