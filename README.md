@@ -59,6 +59,7 @@ const options = {
     fields = ['name', 'path', 'driveId'],
     showBranding = false,
     folderSelectionEnabled = true,
+    driveSelectionEnabled = true,
     onFilesPicked = (files) => {
         console.log('Selected files:', files);
     },
@@ -84,6 +85,7 @@ const filePicker = new FilePicker(options);
 | **fields**        | string[] | No       | Which fields from the raw picked file will be mapped on the files picked callback.                                        |
 | **showBranding**  | boolean  | No       | Show StackOne footer on the file picker, it is defaulted to true.                                                         |
 | **folderSelectionEnabled**   | boolean  | No       | Enable the selection of folders on the unified and native pickers.                                             |
+| **driveSelectionEnabled**     | boolean  | No       | Enable the selection of drives on the unified and native pickers.                                             |
 | **onFilesPicked** | function | No       | Called when files are selected.                                                                                           |
 | **onOpen()**      | function | No       | Called when the file picker is opened.                                                                                    |
 | **onClose()**     | function | No       | Called every time the file picker is closed regardless of whether a file has been picked or not.                          |
