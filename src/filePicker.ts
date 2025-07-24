@@ -12,7 +12,7 @@ export class FilePicker {
     #showBranding = true;
     #fields?: string[];
     #folderSelectionEnabled = false;
-    #siteSelectionEnabled = false;
+    #driveSelectionEnabled = false;
     #onFilesPicked: (data: File[]) => void;
     #onClose: () => void;
     #onOpen: () => void;
@@ -28,7 +28,7 @@ export class FilePicker {
             fields,
             showBranding,
             folderSelectionEnabled,
-            siteSelectionEnabled,
+            driveSelectionEnabled,
             onFilesPicked,
             onClose,
             onOpen,
@@ -42,7 +42,7 @@ export class FilePicker {
         this.#apiUrl = apiUrl ?? 'https://api.stackone.com';
         this.#showBranding = showBranding ?? true;
         this.#folderSelectionEnabled = folderSelectionEnabled ?? false;
-        this.#siteSelectionEnabled = siteSelectionEnabled ?? false;
+        this.#driveSelectionEnabled = driveSelectionEnabled ?? false;
         this.#onFilesPicked = onFilesPicked ?? (() => {});
         this.#onClose = onClose ?? (() => {});
         this.#onOpen = onOpen ?? (() => {});
@@ -82,7 +82,7 @@ export class FilePicker {
             this.#apiUrl,
             this.#showBranding,
             this.#folderSelectionEnabled,
-            this.#siteSelectionEnabled,
+            this.#driveSelectionEnabled,
         );
         this.#iframe.src = url;
     }

@@ -13,7 +13,7 @@ export interface FilePickerOptions {
     fields?: string[];
     showBranding?: boolean;
     folderSelectionEnabled?: boolean;
-    siteSelectionEnabled?: boolean;
+    driveSelectionEnabled?: boolean;
     onFilesPicked?: (data: File[]) => void;
     onError?: (error: Error) => void;
     onClose?: () => void;
