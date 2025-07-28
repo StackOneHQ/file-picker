@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.0](https://github.com/StackOneHQ/file-picker/compare/file-picker-v0.6.0...file-picker-v0.7.0) (2025-07-28)
+
+
+### Features
+
+* **ENG-10240:** drive selection enabled ([#28](https://github.com/StackOneHQ/file-picker/issues/28)) ([897e87a](https://github.com/StackOneHQ/file-picker/commit/897e87ace8f6183fb51638ee819c9f4c528de526))
+
 ## [0.6.0](https://github.com/StackOneHQ/file-picker/compare/file-picker-v0.5.0...file-picker-v0.6.0) (2025-07-22)
 
 
