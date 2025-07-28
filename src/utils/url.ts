@@ -6,12 +6,14 @@ export const createUrl = (
     apiUrl?: string,
     showBranding?: boolean,
     folderSelectionEnabled?: boolean,
+    driveSelectionEnabled?: boolean,
 ) => {
     const url = new URL(baseUrl);
     url.searchParams.set('token', sessionToken);
     url.searchParams.set('origin', btoa(origin));
     url.searchParams.set('showBranding', showBranding ? 'true' : 'false');
     url.searchParams.set('folderSelectionEnabled', folderSelectionEnabled ? 'true' : 'false');
+    url.searchParams.set('driveSelectionEnabled', driveSelectionEnabled ? 'true' : 'false');
 
     if (fields) {
         url.searchParams.set('fields', btoa(JSON.stringify(fields)));
