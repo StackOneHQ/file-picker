@@ -7,6 +7,7 @@ export type File = {
 
 export interface FilePickerOptions {
     sessionToken: string;
+    accountId?: string;
     containerId?: string;
     baseUrl?: string;
     apiUrl?: string;

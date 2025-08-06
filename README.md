@@ -54,6 +54,7 @@ Apart from the `sessionToken`, you may pass a few options to customize the File 
 // Example of Options object
 const options = {
     sessionToken = 'your-session-token',
+    accountId = 'your-account-id', // Optional: simplifies authentication flow
     containerId = 'file-picker-container',
     baseUrl = 'https://app.stackone.com',
     fields = ['name', 'path', 'driveId'],
@@ -80,6 +81,7 @@ const filePicker = new FilePicker(options);
 | Name              | Type     | Required | Description                                                                                                               |
 | ----------------- | -------- | -------- | ------------------------------------------------------------------------------------------------------------------------- |
 | **sessionToken**  | string   | **Yes**  | API session token created in the backend. The session token allows users to have access to their file picker integration. |
+| **accountId**     | string   | No       | Account ID for simplified authentication. When provided, removes the need for additional provider and origin owner validation. |
 | **containerId**   | string   | No       | ID of the container element where the file picker will be mounted.                                                        |
 | **baseUrl**       | string   | No       | Which API instance should it connect to.                                                                                  |
 | **fields**        | string[] | No       | Which fields from the raw picked file will be mapped on the files picked callback.                                        |

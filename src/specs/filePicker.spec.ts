@@ -14,6 +14,17 @@ describe('#FilePicker', () => {
                 expect(picker).toBeInstanceOf(FilePicker);
             });
         });
+
+        describe('when provided with accountId', () => {
+            it('returns a new instance of FilePicker with accountId', () => {
+                const picker = new FilePicker({
+                    sessionToken: 'test-token',
+                    accountId: 'account-123',
+                });
+
+                expect(picker).toBeInstanceOf(FilePicker);
+            });
+        });
     });
 
     describe('When the picker is closed', () => {

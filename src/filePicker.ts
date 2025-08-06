@@ -5,6 +5,7 @@ import { createUrl } from './utils/url';
 export class FilePicker {
     #containerId: string | null;
     #sessionToken: string;
+    #accountId?: string;
     #baseUrl: string;
     #apiUrl: string;
     #iframe: HTMLIFrameElement | null = null;
@@ -23,6 +24,7 @@ export class FilePicker {
         const {
             containerId,
             sessionToken,
+            accountId,
             baseUrl,
             apiUrl,
             fields,
@@ -37,6 +39,7 @@ export class FilePicker {
         } = options;
         this.#containerId = containerId ?? null;
         this.#sessionToken = sessionToken;
+        this.#accountId = accountId;
         this.#fields = fields;
         this.#baseUrl = baseUrl ?? 'https://app.stackone.com';
         this.#apiUrl = apiUrl ?? 'https://api.stackone.com';
@@ -83,6 +86,7 @@ export class FilePicker {
             this.#showBranding,
             this.#folderSelectionEnabled,
             this.#driveSelectionEnabled,
+            this.#accountId,
         );
         this.#iframe.src = url;
     }

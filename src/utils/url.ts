@@ -7,6 +7,7 @@ export const createUrl = (
     showBranding?: boolean,
     folderSelectionEnabled?: boolean,
     driveSelectionEnabled?: boolean,
+    accountId?: string,
 ) => {
     const url = new URL(baseUrl);
     url.searchParams.set('token', sessionToken);
@@ -22,6 +23,11 @@ export const createUrl = (
     if (apiUrl && validateApiUrl(apiUrl)) {
         url.searchParams.set('apiUrl', btoa(apiUrl));
     }
+
+    if (accountId) {
+        url.searchParams.set('accountId', accountId);
+    }
+
     return url.toString();
 };
 

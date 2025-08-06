@@ -65,5 +65,42 @@ describe('#url', () => {
                 expect(parsedUrl.searchParams.get('showBranding')).toBe('false');
             });
         });
+
+        describe('when provided with accountId', () => {
+            it('includes accountId in the URL', () => {
+                const baseUrl = 'https://example.com';
+                const sessionToken = 'test-token';
+                const origin = 'https://myapp.com';
+                const accountId = 'account-123';
+
+                const url = createUrl(
+                    baseUrl,
+                    sessionToken,
+                    origin,
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    accountId,
+                );
+                const parsedUrl = new URL(url);
+
+                expect(parsedUrl.searchParams.get('accountId')).toBe(accountId);
+            });
+        });
+
+        describe('when accountId is not provided', () => {
+            it('creates URL without accountId parameter', () => {
+                const baseUrl = 'https://example.com';
+                const sessionToken = 'test-token';
+                const origin = 'https://myapp.com';
+
+                const url = createUrl(baseUrl, sessionToken, origin);
+                const parsedUrl = new URL(url);
+
+                expect(parsedUrl.searchParams.has('accountId')).toBe(false);
+            });
+        });
     });
 });
