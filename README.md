@@ -64,8 +64,8 @@ const options = {
         console.log('Selected files:', files);
     },
     onOpen = () => {
-            console.log('File picker opened');
-        },
+        console.log('File picker opened');
+    },
     onClose = () => {
         console.log('File picker closed');
     },
