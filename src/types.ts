@@ -14,7 +14,7 @@ export interface FilePickerOptions {
     showBranding?: boolean;
     folderSelectionEnabled?: boolean;
     driveSelectionEnabled?: boolean;
-    onFilesPicked?: (data: File[]) => void;
+    onFilesPicked?: (data: { files: File[] }) => void;
     onError?: (error: Error) => void;
     onClose?: () => void;
     onOpen?: () => void;

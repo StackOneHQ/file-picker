@@ -13,7 +13,7 @@ export class FilePicker {
     #fields?: string[];
     #folderSelectionEnabled = false;
     #driveSelectionEnabled = false;
-    #onFilesPicked: (data: File[]) => void;
+    #onFilesPicked: (data: { files: File[] }) => void;
     #onClose: () => void;
     #onOpen: () => void;
     #onCancel: () => void;

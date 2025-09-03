@@ -60,8 +60,8 @@ const options = {
     showBranding = false,
     folderSelectionEnabled = true,
     driveSelectionEnabled = true,
-    onFilesPicked = (files) => {
-        console.log('Selected files:', files);
+    onFilesPicked = (data) => {
+        console.log('Selected files:', data.files);
     },
     onOpen = () => {
             console.log('File picker opened');
@@ -93,7 +93,7 @@ const filePicker = new FilePicker(options);
 | **onError()**     | function | No       | Called when the file picker has an error.                                                                                 |
 
 ### File Type
-When you get the callback from the `onFilesPicked` function, you will receive an array of files you selected with the following parameters:
+When you get the callback from the `onFilesPicked` function, you will receive an object with a `files` property containing an array of files you selected. Each file has the following parameters:
 | Name              | Type     | Required | Description                                                                                                               |
 | ----------------- | -------- | -------- | ------------------------------------------------------------------------------------------------------------------------- |
 | **id**            | string   | **Yes**  | The Unified Id for the file.                                                                                              |
