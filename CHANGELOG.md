@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.1](https://github.com/StackOneHQ/file-picker/compare/file-picker-v0.7.0...file-picker-v0.7.1) (2025-09-03)
+
+
+### Bug Fixes
+
+* Update FilePickerOptions onFilesPicked type ([#30](https://github.com/StackOneHQ/file-picker/issues/30)) ([2250c3b](https://github.com/StackOneHQ/file-picker/commit/2250c3b26bf9661e3db44033dc3e98e96a79c5ff))
+
 ## [0.7.0](https://github.com/StackOneHQ/file-picker/compare/file-picker-v0.6.0...file-picker-v0.7.0) (2025-07-28)
 
 
