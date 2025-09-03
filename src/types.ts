@@ -3,8 +3,20 @@ export type File = {
     name?: string;
     path?: string;
     driveId?: string;
-    type?: 'file' | 'folder' | 'drive';
-    [key: string]: any; // Allow for additional properties
+};
+
+export type Folder = {
+    id: string;
+    name?: string;
+    path?: string;
+    driveId?: string;
+};
+
+export type Drive = {
+    id: string;
+    name?: string;
+    type?: 'site';
+    createdAt?: string;
 };
 
 export interface FilePickerOptions {
@@ -17,10 +29,9 @@ export interface FilePickerOptions {
     folderSelectionEnabled?: boolean;
     driveSelectionEnabled?: boolean;
     onFilesPicked?: (data: { 
-        files: File[]; 
-        folders?: File[]; 
-        drives?: File[];
-        [key: string]: any; // Allow for additional properties
+        files?: File[]; 
+        folders?: Folder[]; 
+        drives?: Drive[];
     }) => void;
     onError?: (error: Error) => void;
     onClose?: () => void;

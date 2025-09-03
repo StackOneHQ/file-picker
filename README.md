@@ -61,7 +61,16 @@ const options = {
     folderSelectionEnabled = true,
     driveSelectionEnabled = true,
     onFilesPicked = (data) => {
-        console.log('Selected files:', data.files);
+        // data may contain files, folders, and/or drives based on what was selected
+        if (data.files) {
+            console.log('Selected files:', data.files);
+        }
+        if (data.folders) {
+            console.log('Selected folders:', data.folders);
+        }
+        if (data.drives) {
+            console.log('Selected drives:', data.drives);
+        }
     },
     onOpen = () => {
             console.log('File picker opened');
@@ -93,21 +102,30 @@ const filePicker = new FilePicker(options);
 | **onError()**     | function | No       | Called when the file picker has an error.                                                                                 |
 
 ### Callback Data Structure
-When you get the callback from the `onFilesPicked` function, you will receive an object with the following structure:
-- `files` (required): An array of selected items (files, folders, or drives depending on enabled options)
-- `folders` (optional): May contain an array of selected folders when `folderSelectionEnabled` is true
-- `drives` (optional): May contain an array of selected drives when `driveSelectionEnabled` is true
-- Additional properties may be included depending on the integration
+When you get the callback from the `onFilesPicked` function, you will receive an object that may contain one or more of the following properties based on what was selected:
+- `files` (optional): An array of selected files
+- `folders` (optional): An array of selected folders when `folderSelectionEnabled` is true
+- `drives` (optional): An array of selected drives/sites when `driveSelectionEnabled` is true
 
-### File Type
-Each item in the arrays has the following parameters:
+Note: The callback will only include the arrays that have items. For example, if only files are selected, only the `files` property will be present.
+
+### File and Folder Types
+Files and folders share the same structure:
 | Name              | Type     | Required | Description                                                                                                               |
 | ----------------- | -------- | -------- | ------------------------------------------------------------------------------------------------------------------------- |
 | **id**            | string   | **Yes**  | The Unified Id for the file.                                                                                              |
-| **name**          | string   | No       | The Name of the item.                                                                                                     |
-| **path**          | string   | No       | The URL of the item.                                                                                                      |
-| **driveId**       | string   | No       | The Drive Id of the item.                                                                                                 |
-| **type**          | string   | No       | The type of the item: 'file', 'folder', or 'drive'.                                                                      |
+| **name**          | string   | No       | The name of the file or folder.                                                                                          |
+| **path**          | string   | No       | The URL or path of the file or folder.                                                                                   |
+| **driveId**       | string   | No       | The Drive ID where the file or folder is located.                                                                        |
+
+### Drive Type
+Drives have a different structure:
+| Name              | Type     | Required | Description                                                                                                               |
+| ----------------- | -------- | -------- | ------------------------------------------------------------------------------------------------------------------------- |
+| **id**            | string   | **Yes**  | The Unified Id for the drive.                                                                                             |
+| **name**          | string   | No       | The name of the drive or site.                                                                                           |
+| **type**          | string   | No       | Will be 'site' for drives.                                                                                               |
+| **createdAt**     | string   | No       | The creation date of the drive.                                                                                          |
 ## Contribute & Release
 
 This repose uses [conventional commit](https://www.conventionalcommits.org/en/v1.0.0/). The repo use semantic-release and the package version is automatically determined based on the commit messages.
