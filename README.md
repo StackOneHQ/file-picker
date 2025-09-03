@@ -92,14 +92,22 @@ const filePicker = new FilePicker(options);
 | **onCancel()**    | function | No       | Called when the file picker is closed without a file being selected.                                                      |
 | **onError()**     | function | No       | Called when the file picker has an error.                                                                                 |
 
+### Callback Data Structure
+When you get the callback from the `onFilesPicked` function, you will receive an object with the following structure:
+- `files` (required): An array of selected items (files, folders, or drives depending on enabled options)
+- `folders` (optional): May contain an array of selected folders when `folderSelectionEnabled` is true
+- `drives` (optional): May contain an array of selected drives when `driveSelectionEnabled` is true
+- Additional properties may be included depending on the integration
+
 ### File Type
-When you get the callback from the `onFilesPicked` function, you will receive an object with a `files` property containing an array of files you selected. Each file has the following parameters:
+Each item in the arrays has the following parameters:
 | Name              | Type     | Required | Description                                                                                                               |
 | ----------------- | -------- | -------- | ------------------------------------------------------------------------------------------------------------------------- |
 | **id**            | string   | **Yes**  | The Unified Id for the file.                                                                                              |
-| **name**          | string   | No       | The Name of the file.                                                                                                     |
-| **path**          | string   | No       | The URL of the file.                                                                                                      |
-| **driveId**       | string   | No       | The Drive Id of the file.                                                                                                 |
+| **name**          | string   | No       | The Name of the item.                                                                                                     |
+| **path**          | string   | No       | The URL of the item.                                                                                                      |
+| **driveId**       | string   | No       | The Drive Id of the item.                                                                                                 |
+| **type**          | string   | No       | The type of the item: 'file', 'folder', or 'drive'.                                                                      |
 ## Contribute & Release
 
 This repose uses [conventional commit](https://www.conventionalcommits.org/en/v1.0.0/). The repo use semantic-release and the package version is automatically determined based on the commit messages.
