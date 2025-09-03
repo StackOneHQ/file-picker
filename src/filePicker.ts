@@ -1,4 +1,4 @@
-import { File, Folder, Drive, FilePickerOptions } from './types';
+import { Drive, File, FilePickerOptions, Folder } from './types';
 import { createIFrameInDocument } from './utils/dom';
 import { createUrl } from './utils/url';
 
@@ -13,9 +13,9 @@ export class FilePicker {
     #fields?: string[];
     #folderSelectionEnabled = false;
     #driveSelectionEnabled = false;
-    #onFilesPicked: (data: { 
-        files?: File[]; 
-        folders?: Folder[]; 
+    #onFilesPicked: (data: {
+        files?: File[];
+        folders?: Folder[];
         drives?: Drive[];
     }) => void;
     #onClose: () => void;
